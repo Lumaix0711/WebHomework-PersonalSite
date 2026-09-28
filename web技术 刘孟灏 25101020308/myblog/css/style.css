@@ -1,0 +1,539 @@
+/* ============================================================
+ * style.css —— 亮色主题样式表
+ *
+ * 说明：
+ *   这是网站的默认（亮色）主题。所有颜色、布局都在这里定义。
+ *   暗色主题的对应样式在 theme-dark.css 中。
+ *
+ * 如何修改：
+ *   - 想改背景颜色？修改 body 的 background-color
+ *   - 想改导航栏颜色？修改 .navbar 的 background-color
+ *   - 想改字体？修改 body 的 font-family
+ *   - 想改页面宽度？修改 body 的 max-width
+ * ============================================================ */
+
+/* ---- 1. 基本页面样式 ---- */
+/* 所有页面的公共基础设置 */
+body {
+    font-family: Arial, sans-serif;  /* 字体：无衬线字体 */
+    line-height: 1.6;                /* 行高：1.6 倍字体大小，让文字更易读 */
+    color: #333;                     /* 文字颜色：深灰色 */
+    max-width: 800px;                /* 页面最大宽度 800px，超过则居中 */
+    margin: 0 auto;                  /* 水平居中 */
+    padding: 20px;                   /* 内边距 */
+    background-color: #f9f9f9;       /* 背景：浅灰色 */
+}
+
+/* ---- 2. 标题样式 ---- */
+/* h1 一级标题：居中显示，底部有蓝色下划线 */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* h2 二级标题：左侧有蓝色竖线装饰 */
+h2 {
+    color: #34495e;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+/* h3 三级标题：用于内容分区 */
+h3 {
+    color: #2c3e50;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* ---- 3. 水平分割线 ---- */
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* ---- 4. 图片样式 ---- */
+/* 所有 <img> 标签的默认样式 */
+img {
+    display: block;        /* 块级元素，独占一行 */
+    max-width: 40%;        /* 最大宽度为容器的 40% */
+    height: auto;          /* 高度自动，保持比例 */
+    border-radius: 8px;    /* 圆角 */
+    margin: 10px auto;     /* 上下间距 + 水平居中 */
+}
+
+/* ---- 5. 表格样式 ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;  /* 合并相邻边框，没有间隙 */
+    margin: 20px 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;     /* 单元格边框 */
+    padding: 8px;               /* 单元格内边距 */
+    text-align: left;           /* 文字左对齐 */
+}
+
+th {
+    background-color: #f2f2f2;  /* 表头背景：浅灰 */
+}
+
+/* 偶数行背景色（斑马线效果，方便阅读） */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 鼠标悬停行高亮 */
+tr:hover {
+    background-color: #e8f4fc;
+}
+
+/* ---- 6. 列表样式 ---- */
+ul, ol {
+    padding-left: 20px;    /* 列表缩进 */
+}
+
+li {
+    margin-bottom: 10px;    /* 列表项间距 */
+}
+
+/* ---- 7. iframe 框架样式（用于 websites.html 嵌入网页） ---- */
+iframe {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* ---- 8. 链接样式（四种状态） ---- */
+a:link {
+    color: #3498db;            /* 未访问：蓝色 */
+    text-decoration: none;     /* 无下划线 */
+}
+
+a:visited {
+    color: #8e44ad;            /* 已访问：紫色 */
+}
+
+a:hover {
+    color: #e74c3c;            /* 悬停：红色 */
+    text-decoration: underline;
+}
+
+a:active {
+    color: #f39c12;            /* 点击瞬间：橙色 */
+}
+
+/* ---- 9. 段落样式 ---- */
+p {
+    margin: 10px 0;
+}
+
+/* ============================================================
+ * 10. 导航栏样式
+ *
+ * 结构说明：
+ *   .navbar          —— 导航栏容器（蓝色横条）
+ *   .navbar > a      —— 顶部直接链接（如"首页"）
+ *   .dropdown        —— 下拉菜单容器
+ *   .dropbtn         —— 菜单触发按钮
+ *   .dropdown-content—— 下拉面板（默认隐藏）
+ *
+ * 悬停显示原理：
+ *   .dropdown-content 默认 display: none
+ *   .dropdown:hover > .dropdown-content 设为 display: block
+ * ============================================================ */
+
+.navbar {
+    background-color: #3498db;     /* 导航栏背景：蓝色 */
+    display: flex;                 /* 弹性布局，子元素横向排列 */
+    align-items: center;           /* 垂直居中 */
+    height: 60px;                  /* 导航栏高度 */
+    position: relative;
+    z-index: 999;                  /* 确保导航栏在下拉菜单上方 */
+    padding: 0 20px;
+}
+
+/* 导航栏内的直接链接（如"首页"） */
+.navbar > a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 18px;
+    text-decoration: none;
+    transition: background-color 0.3s;  /* 背景色过渡动画 */
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.navbar > a:hover {
+    background-color: #2980b9;     /* 悬停：深蓝色 */
+}
+
+/* 一级下拉菜单容器 */
+.navbar .dropdown {
+    position: relative;            /* 相对定位，下拉面板以此为参照 */
+    margin: 0 5px;
+}
+
+/* 一级菜单触发按钮（如"个人信息 ▾"） */
+.dropdown > .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 18px;
+    background-color: inherit;     /* 继承父元素背景 */
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.dropdown > .dropbtn:hover {
+    background-color: #2980b9;
+}
+
+/* 一级下拉面板（默认隐藏） */
+.dropdown-content {
+    display: none;                 /* 默认不显示 */
+    position: absolute !important; /* 绝对定位，脱离文档流 */
+    background-color: #f9f9f9;     /* 面板背景 */
+    min-width: 180px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    top: 100%;                     /* 位于按钮正下方 */
+    left: 0;
+    border-radius: 0 0 4px 4px;
+    overflow: visible;
+    padding: 0;
+    margin-top: 0;
+}
+
+/* 二级菜单容器（嵌套在一级面板内） */
+.dropdown-content .dropdown {
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+
+/* 二级下拉面板（悬停一级菜单项时向右展开） */
+.dropdown-content .dropdown-content {
+    left: 100%;                    /* 从右侧展开 */
+    top: 0;
+    min-width: 160px;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+/* 菜单项（链接和按钮的公共样式） */
+.dropdown-content a,
+.dropdown-content .dropdown > .dropbtn {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.2s;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.dropdown-content a:hover,
+.dropdown-content .dropdown > .dropbtn:hover {
+    background-color: #eaeaea;     /* 悬停背景：浅灰 */
+    color: #2c3e50;
+}
+
+/* 悬停时显示下拉菜单 */
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+/* 主题切换按钮（在下拉菜单底部，用分割线隔开） */
+#theme-btn {
+    margin-top: 8px !important;
+    border-top: 1px solid #ddd !important;
+    padding: 14px 16px !important;
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50 !important;
+    background-color: transparent !important;
+    border-radius: 0 0 4px 4px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#theme-btn:hover {
+    background-color: #eaeaea !important;
+    color: #2c3e50 !important;
+}
+
+/* ============================================================
+ * 11. 跑马灯横幅
+ *
+ * 实现原理：
+ *   .marquee-banner 是外层容器，overflow: hidden 隐藏溢出
+ *   .marquee-text 用 CSS 动画从右向左平移
+ *   animation: marquee-scroll 20s  —— 20秒滚完一次
+ *   想改速度？改 20s 这个数字（越小越快）
+ * ============================================================ */
+
+.marquee-banner {
+    background: linear-gradient(135deg, #3498db, #2ecc71);  /* 渐变背景 */
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;            /* 隐藏超出部分，配合动画 */
+    white-space: nowrap;         /* 文字不换行 */
+    border-radius: 6px;
+    margin: -20px -20px 20px -20px;  /* 负边距让它撑满页面宽度 */
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+.marquee-text {
+    display: inline-block;
+    animation: marquee-scroll 20s linear infinite;  /* 20秒匀速无限循环 */
+    padding-left: 100%;          /* 从右侧开始进入 */
+}
+
+/* 跑马灯动画关键帧 */
+@keyframes marquee-scroll {
+    0%   { transform: translateX(0); }      /* 起始位置 */
+    100% { transform: translateX(-100%); }  /* 终点：向左移动自身宽度 */
+}
+
+/* ============================================================
+ * 12. 欢迎区域（Hero Section）—— 仅首页使用
+ *
+ * 包含动态时钟、问候语、日期显示
+ * 渐变紫色背景，圆角 + 阴影
+ * ============================================================ */
+
+.hero-section {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* 紫色渐变 */
+    border-radius: 20px;
+    color: white;
+    margin: 40px 30px 30px 30px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.greeting-text {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 30px 30px 12px 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin: 30px 30px 20px 30px;
+}
+
+/* 时钟显示：大号等宽字体 */
+.clock-display {
+    font-size: 42px;                          /* 字号，可调小 */
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;  /* 等宽字体，数字对齐 */
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 10px 0;
+}
+
+/* 日期和星期显示 */
+.date-display {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-top: 5px;
+}
+
+/* ============================================================
+ * 13. 个人简介区域 —— 仅首页使用
+ *
+ * 左侧圆形头像 + 右侧文字介绍
+ * 使用 flex 布局实现左右排列
+ * ============================================================ */
+
+.intro-section {
+    display: flex;               /* 弹性布局 */
+    align-items: center;         /* 垂直居中对齐 */
+    gap: 25px;                   /* 头像和文字之间的间距 */
+    padding: 25px;
+    background: white;           /* 白色背景卡片 */
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* 圆形头像 */
+.intro-avatar {
+    width: 120px;                /* 头像大小，可调 */
+    height: 120px;
+    border-radius: 50%;          /* 50% 变成正圆 */
+    object-fit: cover;           /* 图片裁剪填充，不变形 */
+    border: 4px solid #3498db;   /* 蓝色边框 */
+    flex-shrink: 0;              /* 不被压缩 */
+}
+
+.intro-text {
+    flex: 1;                     /* 占据剩余空间 */
+}
+
+.intro-text h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 22px;
+}
+
+.intro-text p {
+    margin: 0;
+    color: #666;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* ============================================================
+ * 14. 快捷导航卡片 —— 仅首页使用
+ *
+ * 使用 CSS Grid 自动排列卡片
+ * grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+ * 含义：每列最小 200px，能放几个就放几个，自动换行
+ * ============================================================ */
+
+.card-section {
+    margin-bottom: 30px;
+}
+
+.card-section h2 {
+    margin-bottom: 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;                   /* 卡片之间的间距 */
+}
+
+/* 单个卡片 */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 悬停动画 */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* 卡片悬停效果：上浮 + 加深阴影 */
+.card:hover {
+    transform: translateY(-5px);         /* 向上移动 5px */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+.card-icon {
+    font-size: 40px;             /* emoji 图标大小 */
+    margin-bottom: 12px;
+    display: block;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #888;
+    margin: 0;
+}
+
+/* ============================================================
+ * 15. 引用块样式 —— 用于 quotes.html（名言警句）
+ *
+ * <blockquote> 标签的默认样式不好看，这里重新定义
+ * 左侧蓝色竖线 + 浅蓝背景
+ * ============================================================ */
+
+blockquote {
+    border-left: 4px solid #3498db;   /* 左侧蓝色竖线 */
+    background: #f0f7fc;              /* 浅蓝背景 */
+    margin: 15px 0;
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;       /* 右侧圆角 */
+    color: #555;
+    font-style: italic;               /* 斜体 */
+}
+
+blockquote p {
+    margin: 0;
+}
+
+/* ============================================================
+ * 16. 页脚样式
+ * ============================================================ */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #eee;       /* 顶部细线分割 */
+    color: #aaa;                      /* 浅灰色文字 */
+    font-size: 13px;
+}
+
+.footer a {
+    color: #3498db;
+}
+
+/* ============================================================
+ * 17. 响应式适配（手机屏幕）
+ *
+ * 当屏幕宽度 ≤ 600px 时生效
+ * 调整布局让页面在手机上也能正常显示
+ * ============================================================ */
+
+@media (max-width: 600px) {
+    /* 简介区域改为上下排列（头像在上，文字在下） */
+    .intro-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* 时钟字号缩小 */
+    .clock-display {
+        font-size: 30px;
+    }
+
+    /* 问候语字号缩小 */
+    .greeting-text {
+        font-size: 22px;
+    }
+
+    /* 卡片网格改为每行 2 个 */
+    .card-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

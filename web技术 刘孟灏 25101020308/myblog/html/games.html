@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+    games.html —— 游戏页面
+
+    页面结构（所有子页面相同）：
+      1. 跑马灯横幅 —— 所有页面共用
+      2. 导航栏     —— 所有页面共用（修改菜单需同步所有文件）
+      3. 内容区域   —— 常玩的游戏和成就
+      4. 引入 JS    —— 所有页面共用（主题切换 + 标题跑马灯）
+
+    如何修改：
+      - 想改内容？修改导航栏和 JS 之间的 HTML
+      - 页面里搜索 <!-- 填写 即可找到需要你填写的位置
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏 - 刘孟灏的个人网页</title>
+    <link rel="stylesheet" href="../css/style.css" id="theme-stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-banner">
+        <span class="marquee-text">
+            欢迎来到刘孟灏的个人主页！&nbsp;&nbsp;★&nbsp;&nbsp;这里是北方工业大学计算机科学与技术专业的一名学生的个人空间&nbsp;&nbsp;★&nbsp;&nbsp;感谢你的访问，祝你今天愉快！&nbsp;&nbsp;★&nbsp;&nbsp;Welcome to my personal website!&nbsp;&nbsp;★&nbsp;&nbsp;
+        </span>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html">首页</a>
+        <div class="dropdown">
+            <button class="dropbtn">个人信息 ▾</button>
+            <div class="dropdown-content">
+                <a href="info.html">基本信息</a>
+                <a href="self-intro.html">自我介绍</a>
+                <a href="contact.html">联系我</a>
+                <a href="daily-life.html">日常生活</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">学业相关 ▾</button>
+            <div class="dropdown-content">
+                <a href="education.html">教育经历</a>
+                <a href="skills.html">专业技能</a>
+                <a href="projects.html">项目作品</a>
+                <a href="awards.html">获奖荣誉</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">兴趣爱好 ▾</button>
+            <div class="dropdown-content">
+                <a href="hobbies.html">兴趣爱好</a>
+                <a href="anime.html">动漫</a>
+                <a href="games.html">游戏</a>
+                <a href="bucket-list.html">心愿清单</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">媒体收藏 ▾</button>
+            <div class="dropdown-content">
+                <a href="websites.html">喜欢的网站</a>
+                <a href="music.html">音乐</a>
+                <a href="movies.html">电影</a>
+                <a href="books.html">书籍</a>
+                <a href="photos.html">生活照片</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">更多选项 ▾</button>
+            <div class="dropdown-content">
+                <a href="quotes.html">名言警句</a>
+                <a href="tools.html">工具网站</a>
+                <div class="dropdown">
+                    <button class="dropbtn">社交媒体 ▸</button>
+                    <div class="dropdown-content">
+                        <a href="https://v.douyin.com/7Aoao2bpMHw/" target="_blank">抖音</a>
+                        <a href="https://github.com/Lumaix0711" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <a href="#" id="theme-btn">切换暗色主题</a>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>🎮 我喜欢的游戏</h2>
+    <p>游戏是我课余时间的重要娱乐：</p>
+
+    <h3>🕹️ 常玩的游戏</h3>
+    <table>
+        <tr>
+            <th>游戏名称</th>
+            <th>类型</th>
+            <th>平台</th>
+            <th>游玩时长</th>
+            <th>推荐指数</th>
+        </tr>
+        <tr>
+            <td>荒野大镖客2：救赎</td>
+            <td>APRG</td>
+            <td>PS4</td>
+            <td>128h</td>
+            <td>10.0</td>
+        </tr>
+        <tr>
+            <td>上古卷轴5：天际</td>
+            <td>ARPG</td>
+            <td>PS4</td>
+            <td>97h</td>
+            <td>9.9</td>
+        </tr>
+        <tr>
+            <td>RimWorld</td>
+            <td>模拟殖民</td>
+            <td>PC</td>
+            <td>2643h</td>
+            <td>10.0</td>
+        </tr>
+        <tr>
+            <td>艾尔登法环</td>
+            <td>魂类游戏</td>
+            <td>PC</td>
+            <td>217h</td>
+            <td>9.9</td>
+        </tr>
+    </table>
+
+    <img src="../image/NMS.jpg" alt="无人深空" style="float: right; width: 45%; margin-left: 10px; margin-bottom: 10px;">
+
+    <h3>🏆 游戏成就</h3>
+    <ul>
+        <li>Apex大师段位</li>
+        <li>守望先锋3v3模式五百强</li>
+        <li>无人深空永久死亡模式抵达银心</li>
+    </ul>
+
+    <h3>💭 对游戏的看法</h3>
+    <p>我平淡人生中开出无限可能的花</p>
+    
+    <script src="../js/main.js"></script>
+</body>
+</html>
